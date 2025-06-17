@@ -18,6 +18,7 @@ button {
   cursor: pointer;
   background-color: var(--red);
   border-radius: 3px;
+  width: 30%;
 }
  
 input {
@@ -25,6 +26,7 @@ input {
   background-color: var(--bg_main);
   border: none;
   border-bottom: 1px solid var(--text_light);
+  width: 70%;
 }
 
 .heading {
@@ -35,6 +37,8 @@ input {
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
 }
 
 ::placeholder {color: var(--text_light);}
@@ -44,6 +48,7 @@ input {
   outline: none;
   color: var(--text_light);
 }
+
 img {
   display: block;
   max-width: 100%;
@@ -66,5 +71,5 @@ form, .heading {display: flex;
 
 @media all and (min-width: 700px){
     form { flex-direction: column;}
-
+    button, input {width: 100%;}
 }
