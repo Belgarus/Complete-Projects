@@ -15,18 +15,23 @@
 }
 button {
   cursor: pointer;
+  background-color: var(--red);
+  border-radius: 3px;
 }
  
 input {
   -webkit-appearance: none;
 }
+
+.heading {
+    color: var(--text_light);
+}
  
 button,
 input {
   border: none;
-  background: none;
   outline: none;
-  color: inherit;
+  color: var(--text_light);
 }
 img {
   display: block;
