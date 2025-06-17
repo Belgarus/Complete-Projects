@@ -14,13 +14,21 @@
   font-weight: normal;
 }
 button {
-    border: none;
+  border: none;
   cursor: pointer;
   background-color: var(--red);
   border-radius: 3px;
   width: 30%;
 }
  
+
+.top-banner form input {
+  font-size: 2rem;
+  height: 40px;
+  padding: 5px 5px 10px;
+  border-bottom: 1px solid;
+}
+
 input {
   -webkit-appearance: none;
   background-color: var(--bg_main);
@@ -30,7 +38,11 @@ input {
 }
 
 .heading {
-    color: var(--text_light);
+        color: var(--text_light);
+        font-weight: bold;
+        font-size: 4rem;
+        letter-spacing: 0.02em;
+        padding: 0 0 30px 0;
 }
 
 .container {
@@ -39,6 +51,8 @@ input {
     flex-direction: column;
     width: 100%;
     max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
 ::placeholder {color: var(--text_light);}
@@ -67,7 +81,28 @@ body {
 form, .heading {display: flex;
             gap: 10px;
             align-items: center;
+            width: 100%;
           }
+
+
+.top-banner form button {
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  padding: 15px 20px;
+  margin-left: 15px;
+  border-radius: 5px;
+  background: var(--red);
+  transition: background 0.3s ease-in-out;
+}
+
+.top-banner form .msg {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  max-width: 450px;
+  min-height: 40px;
+}
 
 @media all and (min-width: 700px){
     form { flex-direction: column;}
