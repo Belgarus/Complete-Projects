@@ -21,12 +21,15 @@ button {
  
 input {
   -webkit-appearance: none;
+  background-color: var(--bg_main);
 }
 
 .heading {
     color: var(--text_light);
 }
- 
+
+::placeholder {color: var(--text_light);}
+
 button,
 input {
   border: none;
@@ -46,4 +49,15 @@ body {
   background: var(--bg_main);
   color: var(--text_dark);
   padding: 50px;
+}
+
+form {display: flex;
+            gap: 10px;
+          }
+
+@media all and (max-width: 700px){
+    form { 
+
+    }
+
 }
