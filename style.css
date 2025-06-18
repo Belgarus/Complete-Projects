@@ -89,6 +89,7 @@ form, .heading {display: flex;
             gap: 10px;
             align-items: center;
             width: 100%;
+            position: relative;
           }
 
 
@@ -97,7 +98,6 @@ form, .heading {display: flex;
   font-weight: bold;
   letter-spacing: 0.1em;
   padding: 15px 20px;
-  margin-left: 15px;
   border-radius: 5px;
   background: var(--red);
   transition: background 0.3s ease-in-out;
@@ -109,6 +109,7 @@ form, .heading {display: flex;
   left: 0;
   max-width: 450px;
   min-height: 40px;
+  color: var(--text_light);
 }
 
 @media all and (min-width: 700px){
