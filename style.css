@@ -20,6 +20,9 @@ button {
   border-radius: 3px;
   width: 30%;
 }
+.top-banner form button:hover {
+  background: var(--darkred);
+}
  
 
 .top-banner form input {
