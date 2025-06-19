@@ -64,8 +64,13 @@ const filteredArray = listItemsArray.filter(elem => {
     if (inputVal.includes(',')){
         if(inputVal.split(',')[1].length() > 2){
             inputVal = inputVal.split(",")[0];
-        content = el.querySelector(".city-name span").textContent.toLowerCase();
+            content = elem.querySelector(".city-name span").textContent.toLowerCase();
+        } else {
+            content = elem.querySelector(".city-name").textContent.toLowerCase();
         }
+    } else {
+        content = elem.querySelector(".city-name span").textContent.toLowerCase();
     }
-})
+    return content == inputVal.toLowerCase();
+    })
 }
