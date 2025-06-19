@@ -72,5 +72,11 @@ const filteredArray = listItemsArray.filter(elem => {
         content = elem.querySelector(".city-name span").textContent.toLowerCase();
     }
     return content == inputVal.toLowerCase();
-    })
+    }) 
+// 3
+    if (filteredArray.length > 0) {
+        msg.textContent = `You already know the weather for ${
+                                                filteredArray[0].querySelector(".city-name span")
+                                                .textContent} ...otherwise be more specific by providing the country code as well 😉`;
+    }
 }
