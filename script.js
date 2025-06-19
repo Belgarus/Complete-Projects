@@ -61,5 +61,11 @@ if (listItemsArray.length > 0) {
 // 2
 const filteredArray = listItemsArray.filter(elem => {
     const content = ""
+    if (inputVal.includes(',')){
+        if(inputVal.split(',')[1].length() > 2){
+            inputVal = inputVal.split(",")[0];
+        content = el.querySelector(".city-name span").textContent.toLowerCase();
+        }
+    }
 })
 }
