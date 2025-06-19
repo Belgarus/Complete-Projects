@@ -51,3 +51,15 @@ form.addEventListener("submit", e => {
       input.focus();
     });
 });
+
+//Check for country
+// 1
+const listItems = list.querySelectorAll(".ajax-section .city");
+const listItemsArray = Array.from(listItems);
+
+if (listItemsArray.length > 0) {
+// 2
+const filteredArray = listItemsArray.filter(elem => {
+    const content = ""
+})
+}
