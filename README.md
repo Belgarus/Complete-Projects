@@ -8,7 +8,7 @@ It fetches real-time weather data from the [OpenWeatherMap API](https://home.ope
 
 * 🌍 Real-time weather data
 * 📱 Responsive and flexible layout
-* ☁️ Simple and clean design using plain JavaScript
+* ☁️ Simple and clean design using JavaScript and CSS
 
 ### Screenshots
 
