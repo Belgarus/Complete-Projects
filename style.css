@@ -15,6 +15,9 @@
 }
 
 /*----- Section #1 ----- */
+span {margin-top: 6px;
+        color: var(--text_med);
+        }
 
 button {
   border: none;

@@ -7,7 +7,35 @@ const apiKey = "14d674dd08475e037565e3a068a05b95";
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  const inputVal = input.value;
+  let inputVal = input.value;
+
+  // Duplicate city check logic
+  const listItems = list.querySelectorAll(".city");
+  const listItemsArray = Array.from(listItems);
+  if (listItemsArray.length > 0) {
+    const filteredArray = listItemsArray.filter(el => {
+      let content = "";
+      if (inputVal.includes(",")) {
+        if (inputVal.split(",")[1].length > 2) {
+          inputVal = inputVal.split(",")[0];
+          content = el.querySelector(".city-name span").textContent.toLowerCase();
+        } else {
+          content = el.querySelector(".city-name").dataset.name.toLowerCase();
+        }
+      } else {
+        content = el.querySelector(".city-name span").textContent.toLowerCase();
+      }
+      return content == inputVal.toLowerCase();
+    });
+    if (filteredArray.length > 0) {
+      msg.textContent = `You already know the weather for ${
+        filteredArray[0].querySelector(".city-name span").textContent
+      } ...otherwise be more specific by providing the country code as well 😉`;
+      form.reset();
+      input.focus();
+      return;
+    }
+  }
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric`;
 
@@ -51,32 +79,3 @@ form.addEventListener("submit", e => {
       input.focus();
     });
 });
-
-//Check for country
-// 1
-const listItems = list.querySelectorAll(".ajax-section .city");
-const listItemsArray = Array.from(listItems);
-
-if (listItemsArray.length > 0) {
-// 2
-const filteredArray = listItemsArray.filter(elem => {
-    const content = ""
-    if (inputVal.includes(',')){
-        if(inputVal.split(',')[1].length() > 2){
-            inputVal = inputVal.split(",")[0];
-            content = elem.querySelector(".city-name span").textContent.toLowerCase();
-        } else {
-            content = elem.querySelector(".city-name").textContent.toLowerCase();
-        }
-    } else {
-        content = elem.querySelector(".city-name span").textContent.toLowerCase();
-    }
-    return content == inputVal.toLowerCase();
-    }) 
-// 3
-    if (filteredArray.length > 0) {
-        msg.textContent = `You already know the weather for ${
-                                                filteredArray[0].querySelector(".city-name span")
-                                                .textContent} ...otherwise be more specific by providing the country code as well 😉`;
-    }
-}
