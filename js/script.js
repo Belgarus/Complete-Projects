@@ -95,6 +95,18 @@ window.addEventListener('coordsFound', (e) => {
       const { main, name, sys, weather } = data;
       const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]}.svg`;
 
+      // Prevent duplicate city from coordinates
+      const listItems = list.querySelectorAll(".city");
+      const exists = Array.from(listItems).some(el => {
+        const cityName = el.querySelector(".city-name span").textContent;
+        const countryCode = el.querySelector(".city-name sup").textContent;
+        return cityName === name && countryCode === sys.country;
+      });
+      if (exists) {
+        msg.textContent = `You already know the weather for ${name}, ${sys.country}`;
+        return;
+      }
+
       const li = document.createElement("li");
       li.classList.add("city");
 
