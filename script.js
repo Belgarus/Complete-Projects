@@ -65,7 +65,7 @@ form.addEventListener("submit", e => {
         </figure>
       `;
 
-      li.innerHTML = markup;
+      li.innerHTML = markup;   
       list.appendChild(li);
       msg.textContent = "";
       
