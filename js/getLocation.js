@@ -1,8 +1,6 @@
 // Get references to HTML elements we need
 const locationIcon = document.querySelector('.Icon');
-const msg = document.querySelector("form.top-banner .msg");
-const input = document.querySelector("form.top-banner input");
-const form = document.querySelector("form.top-banner");
+// We use form, input, and msg from script.js
 
 // This function gets the city name from latitude and longitude
 async function getCityFromCoords(latitude, longitude) {
