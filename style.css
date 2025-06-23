@@ -3,8 +3,8 @@
   --text_light: #fff;
   --text_med: #53627c;
   --text_dark: #1e2432;
-  --red: #ff1e42;
-  --darkred: #c3112d;
+  --red: #c80000;
+  --darkred: #9e0101;
   --orange: #ff8c00;
 }
 * {
@@ -189,4 +189,19 @@ form, .heading {display: flex;
   margin-top: 10px;
   width: 100px;
   height: 100px;
+}
+
+/*--Additional Section--*/
+.Icon { 
+          width: 30px;
+}
+.Icon:hover {width: 32.5px;
+                      transition: 0.3s ease-in-out;
+                    }
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  bottom: 10px;
+  right: 50px;
 }
