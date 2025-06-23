@@ -1,6 +1,6 @@
 // Get references to HTML elements we need
 const locationIcon = document.querySelector('.Icon');
-// We use form, input, and msg from script.js
+// Using msg from script.js
 
 // This function gets the city name from latitude and longitude
 async function getCityFromCoords(latitude, longitude) {
@@ -25,50 +25,26 @@ async function getCityFromCoords(latitude, longitude) {
 
 // What happens when someone clicks the location icon
 locationIcon.addEventListener('click', () => {
-    // First, check if the browser supports geolocation
     if (!navigator.geolocation) {
-        msg.textContent = "Your browser doesn't support location services";
+        msg.textContent = "Geolocation is not supported by your browser.";
         return;
     }
 
-    // Show a loading message
     msg.textContent = "Getting your location...";
-    
-    // Options for getting the location
-    const options = {
-        enableHighAccuracy: true,  // Get the best possible location
-        timeout: 5000,            // Wait up to 5 seconds
-        maximumAge: 0             // Always get a fresh location
-    };
 
-    // Success handler - what to do when we get the location
-    const handleSuccess = async (position) => {
-        const { latitude, longitude } = position.coords;
-        const cityName = await getCityFromCoords(latitude, longitude);
-        
-        // Put the city name in the search box
-        input.value = cityName;
-        
-        // Automatically search for the weather
-        const submitEvent = new Event('submit');
-        form.dispatchEvent(submitEvent);
-    };
-
-    // Error handler - what to do if something goes wrong
-    const handleError = (error) => {
-        let errorMessage = "Couldn't get your location";
-        
-        if (error.code === error.PERMISSION_DENIED) {
-            errorMessage = "Please allow location access to use this feature";
-        }
-        
-        msg.textContent = errorMessage;
-    };
-
-    // Start getting the location
     navigator.geolocation.getCurrentPosition(
-        handleSuccess,
-        handleError,
-        options
+        (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            // Dispatch a custom event with the coordinates
+            const event = new CustomEvent('coordsFound', {
+                detail: { latitude, longitude }
+            });
+            window.dispatchEvent(event);
+        },
+        (error) => {
+            msg.textContent = `Error: Unable to retrieve your location (${error.message})`;
+        }
     );
 });
