@@ -34,17 +34,14 @@ locationIcon.addEventListener('click', () => {
 
     navigator.geolocation.getCurrentPosition(
         (position) => {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-
-            // Dispatch a custom event with the coordinates
+            const { latitude, longitude } = position.coords;
             const event = new CustomEvent('coordsFound', {
                 detail: { latitude, longitude }
             });
             window.dispatchEvent(event);
         },
         (error) => {
-            msg.textContent = `Error: Unable to retrieve your location (${error.message})`;
+            msg.textContent = `Error: ${error.message}`;
         }
     );
 });
