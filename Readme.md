@@ -14,6 +14,11 @@ A straightforward to-do list built with vanilla JavaScript. Users can add, remov
 Based on the tutorial repository:
 [dwyl/javascript-todo-list-tutorial](https://github.com/dwyl/javascript-todo-list-tutorial)
 
+## Future Project Ideas
+
+Youtube: ["One project EVERY WEEK"](https://www.youtube.com/watch?v=nr8biZfSZ3Y)<br>
+Repo: ["Project based learning"](https://github.com/axelbdt/project-based-learning)
+
 ---
 
 Both projects are implemented using **vanilla JavaScript**.
