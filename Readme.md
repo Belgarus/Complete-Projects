@@ -19,9 +19,4 @@ Based on the tutorial repository:
 Youtube: ["One project EVERY WEEK"](https://www.youtube.com/watch?v=nr8biZfSZ3Y)<br>
 Repo: ["Project based learning"](https://github.com/axelbdt/project-based-learning)
 
----
-
-Both projects are implemented using **vanilla JavaScript**.
-
-✨ More projects coming soon!
 
