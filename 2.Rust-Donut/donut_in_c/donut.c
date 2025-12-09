@@ -1,4 +1,5 @@
 //Code From: https://www.a1k0n.net/2011/07/20/donut-math.html
+//Code is obsolete and doesn't work
             
             k;double sin()
          ,cos();main(){float A=
