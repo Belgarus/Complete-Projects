@@ -1,18 +1,22 @@
+use std::io::{stdout, Write};
+
 fn main() {
     let mut a: f32 = 0.0;
     let mut b: f32 = 0.0;
 
-    let mut z_arr: [f32; 1760] = [0.0; 1760]; 
-    let mut b_arr: [u8; 1760] = [0; 1760]; 
+    let mut z_arr = [0.0f32; 1760];
+    let mut b_arr = [b' '; 1760];
 
-    println!("\x1b[2J");
+    print!("\x1b[2J");
 
     loop {
         b_arr.fill(b' ');
         z_arr.fill(0.0);
 
-        for j in (0..90).map(|j_step| j_step as f32 * 0.07) { //for (j = 0; j < 6.28; j += 0.07)
-            for i in (0..314).map(|i_step| i_step as f32 * 0.02) {
+        for j_step in 0..90 { // for (j = 0; j < 6.28; j += 0.07)
+            let j = j_step as f32 * 0.07;
+            for i_step in 0..314 { // for (i = 0; i < 6.28; i += 0.02)
+                let i = i_step as f32 * 0.02;
 
                 let c = i.sin();
                 let d = j.cos();
@@ -21,36 +25,43 @@ fn main() {
                 let g = a.cos();
 
                 let h = d + 2.0;
-                let d_bl = 1.0 / (c * h * e + f * g + 5.0);
+                let D = 1.0 / (c * h * e + f * g + 5.0);
 
                 let l = i.cos();
                 let m = b.cos();
                 let n = b.sin();
 
                 let t = c * h * g - f * e;
-                let x: u32 = (40.0 + 30.0 * d_bl * (1.0 * h * m - t * n)) as u32;
-                let y: u32 = (12.0 + 15.0 * d_bl * (1.0 * h * n + t * m)) as u32;
-                let o_obs: u32 = x + 80 * y;
-                let o = o_obs as usize;
 
-                let n_bl: u32 = (8.0 * ((f * e - c * d * g) * m - c * d * e - f * g - l * d * n)) as u32;
-                
-                if 22 > y && y > 0 && x > 0 && 80 > x && d_bl > z_arr[o] {
-                    z_arr[o] = d_bl;
-                    b_arr[o] = ".,-~:;=!*#$@".as_bytes()[(if n_bl > 0 { n_bl } else { 0 }) as usize];
+                let x = (40.0 + 30.0 * D * (l * h * m - t * n)) as i32;
+                let y = (12.0 + 15.0 * D * (l * h * n + t * m)) as i32;
+
+                let o = x + 80 * y;
+
+                let N = (8.0
+                    * ((f * e - c * d * g) * m - c * d * e - f * g - l * d * n))
+                    as i32;
+
+                if y > 0 && y < 22 && x > 0 && x < 80 && D > z_arr[o as usize] {
+                    z_arr[o as usize] = D;
+                    let idx = if N > 0 { N } else { 0 } as usize;
+                    b_arr[o as usize] = b" .,-~:;=!*#$@"[idx];
                 }
             }
-            println!("\x1b[H");
-            for k in 0..1760 {
-                if k % 80 == 0 {
-                    println!();
-                } else {
-                    print!("{}", b_arr[k] as char);
-                }
-            }
-            a += 0.001;
-            b += 0.0005;
         }
+
+        print!("\x1b[H");
+        for k in 0..1760 {
+            if k % 80 == 0 {
+                print!("\n");
+            } else {
+                print!("{}", b_arr[k] as char);
+            }
+        }
+
+        stdout().flush().unwrap();
+
+        a += 0.01;
+        b += 0.005;
     }
-    //return 0;
 }
