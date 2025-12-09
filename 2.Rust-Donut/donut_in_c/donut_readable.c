@@ -3,68 +3,43 @@
 #include <math.h>
 
 int main() {
-    // Rotationswinkel
-    float A = 0.0f;
-    float B = 0.0f;
+    float A = 0, B = 0;
+    float i, j;
+    float z[1760];
+    char b[1760];
+    int k;
 
-    // Output-Puffer
-    char buffer[1760];
-    float zbuffer[1760];
+    printf("\x1b[2J");
 
-    printf("\x1b[2J"); // Bildschirm löschen
+    for (;;) {
+        memset(b, ' ', 1760);
+        memset(z, 0, 7040);
 
-    for (;;) { // Endlosschleife
-        memset(buffer, ' ', sizeof(buffer));
-        memset(zbuffer, 0, sizeof(zbuffer));
-
-        // Zwei Rotationsparameter: um i und j drehen
-        for (float j = 0; j < 2 * M_PI; j += 0.07f) {
-            for (float i = 0; i < 2 * M_PI; i += 0.02f) {
-
-                float sin_i = sinf(i);
-                float cos_i = cosf(i);
-                float sin_j = sinf(j);
-                float cos_j = cosf(j);
-
-                float sinA = sinf(A);
-                float cosA = cosf(A);
-                float sinB = sinf(B);
-                float cosB = cosf(B);
-
-                float circleX = cos_i;
-                float circleY = sin_i;
-
-                float h = cos_j + 2.0f;
-                float D = 1.0f / (circleY * h * sinA + sin_j * cosA + 5.0f);
-
-                float t = circleY * h * cosA - sin_j * sinA;
-
-                int x = (int)(40 + 30 * D * (circleX * h * cosB - t * sinB));
-                int y = (int)(12 + 15 * D * (circleX * h * sinB + t * cosB));
-
+        for (j = 0; j < 6.28; j += 0.07)
+            for (i = 0; i < 6.28; i += 0.02) {
+                float c = sin(i), d = cos(j), e = sin(A);
+                float f = sin(j), g = cos(A), h = d + 2;
+                float D = 1 / (c * h * e + f * g + 5);
+                float l = cos(i), m = cos(B), n = sin(B);
+                float t = c * h * g - f * e;
+                int x = 40 + 30 * D * (l * h * m - t * n);
+                int y = 12 + 15 * D * (l * h * n + t * m);
                 int o = x + 80 * y;
+                int N = 8 * ((f * e - c * d * g) * m - c * d * e - f * g - l * d * n);
 
-                float luminance = 
-                    8 * ((sin_j * sinA - circleY * cos_j * cosA) * cosB
-                    - circleY * cos_j * sinA
-                    - cos_i * cos_j * sinB);
-
-                int L = (int)(luminance > 0 ? luminance : 0);
-
-                if (y > 0 && y < 22 && x > 0 && x < 80 && D > zbuffer[o]) {
-                    zbuffer[o] = D;
-                    buffer[o] = ".,-~:;=!*#$@"[L];
+                if (22 > y && y > 0 && x > 0 && 80 > x && D > z[o]) {
+                    z[o] = D;
+                    b[o] = ".,-~:;=!*#$@"[N > 0 ? N : 0];
                 }
             }
-        }
 
-        printf("\x1b[H"); // Cursor nach oben
-        for (int k = 0; k < 1760; k++) {
-            putchar(k % 80 ? buffer[k] : '\n');
-        }
+        printf("\x1b[H");
+        for (k = 0; k < 1760; k++)
+            putchar(k % 80 ? b[k] : '\n');
 
-        A += 0.04f;
-        B += 0.02f;
+        A += 0.01f;
+        B += 0.005f;
+
     }
 
     return 0;
