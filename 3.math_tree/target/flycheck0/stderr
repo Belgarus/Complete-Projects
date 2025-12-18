@@ -1,0 +1,5 @@
+error: invalid character `3` in package name: `3.Math-Tree`, the name cannot start with a digit
+ --> Cargo.toml:2:8
+  |
+2 | name = "3.Math-Tree"
+  |        ^^^^^^^^^^^^^
