@@ -1,5 +1,5 @@
 [package]
-name = "3.Math-Tree"
+name = "math_tree"
 version = "0.1.0"
 edition = "2024"
 
