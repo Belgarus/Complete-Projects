@@ -18,10 +18,14 @@ python3 -m http.server 8000
 <img src="https://github.com/user-attachments/assets/620ccbf7-8553-4312-809a-3be5c07483e5" height="225px">
 
 ## 2. Rust Donut
+
 A rewrite of the famous [donut.c](https://www.a1k0n.net/2011/07/20/donut-math.html) project in rust.
 
 <img src="https://media.giphy.com/media/4ampCUXWkDITsLmRj9/giphy.gif" height="225px"/> <img src="donut_code.png" height="225px"/>
 
+## 3. Math tree
+
+in progress
 ---
 
 ## Future Project Ideas
