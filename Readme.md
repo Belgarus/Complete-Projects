@@ -23,10 +23,6 @@ A rewrite of the famous [donut.c](https://www.a1k0n.net/2011/07/20/donut-math.ht
 
 <img src="https://media.giphy.com/media/4ampCUXWkDITsLmRj9/giphy.gif" height="225px"/> <img src="donut_code.png" height="225px"/>
 
-## 3. Math tree
-
-in progress
-
 ---
 
 ## Future Project Ideas
