@@ -1,1 +1,0 @@
-/mnt/c/Users/10145000/Documents/Complete-Projects/2.Rust-Donut/donut_in_rust_in_donut/target/debug/donut_in_rust_in_donut: /mnt/c/Users/10145000/Documents/Complete-Projects/2.Rust-Donut/donut_in_rust_in_donut/src/main.rs
