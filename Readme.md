@@ -27,8 +27,7 @@ A rewrite of the famous [donut.c](https://www.a1k0n.net/2011/07/20/donut-math.ht
 
 ## Future Project Ideas
 
-YouTube: ["One project EVERY WEEK"](https://www.youtube.com/watch?v=nr8biZfSZ3Y)
-Repo: ["Project based learning"](https://github.com/axelbdt/project-based-learning)
+YouTube: ["One project EVERY WEEK"](https://www.youtube.com/watch?v=nr8biZfSZ3Y) and Repo: ["Project based learning"](https://github.com/axelbdt/project-based-learning)
 
 
 
